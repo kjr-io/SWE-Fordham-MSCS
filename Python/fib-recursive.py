@@ -1,11 +1,12 @@
+import time
+import itertools
+
 # Recursive Fibonacci Sequence
 def recursiveFib(n):
-    # Filtering Invalid Inputs
-    if type(n) != int or n < 0:
-        return("Sorry, Not a Valid Input!")
+    return n if n < 2 else recursiveFib(n-1) + recursiveFib(n-2)
 
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    return recursiveFib(n - 1) + recursiveFib(n - 2)
+start_time = time.time()
+for _, i in itertools.product(range (1000), range(25)):
+    recursiveFib(i)
+    
+print(f"--- {time.time() - start_time} seconds ---")

@@ -1,15 +1,25 @@
-#Iterative Fibonacci Sequence
-def iterativeFib(n):
-    # Filtering Invalid Inputs
-    if type(n) != int or n < 0:
-        return("Sorry, Not a Valid Input!")
+import time
+import itertools
 
-    ultimate = 0
-    current = 1
-    i = 1
+# Iterative Fibonacci Sequence
+def iterativeFib(n):
+    if n < 2:
+        return n
+
+    a = 0
+    b = 1
+    i = 0
+    
     while i < n:
-        penultimate = ultimate
-        ultimate = current
-        current = penultimate + ultimate
+        temp = a
+        a = b
+        b = temp + b
         i += 1
-    return current
+        
+    return a
+
+start_time = time.time()
+for _, i in itertools.product(range (10000000), range(25)):
+    iterativeFib(i)
+
+print(f"--- {time.time() - start_time} seconds ---")
